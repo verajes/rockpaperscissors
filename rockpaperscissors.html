@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Rock-Paper-Scissors</title>
+    <meta charset="utf-8"/>
+</head>
+<body>
+    <script>
+        function capitalize(string) {
+            let lowerCaseString = string.toLowerCase();
+            let capitalizedLetter = lowerCaseString.charAt(0).toUpperCase();
+            let finishedString = lowerCaseString.replace(lowerCaseString.charAt(0),capitalizedLetter)
+            return finishedString;
+        }
+        
+        
+        function computerPlay() {
+            randomNumber = Math.random()*15; //random Number between 0 and 15
+            return (randomNumber<=5) ? 'Rock' : (randomNumber<=10) ? 'Paper' : 'Scissors';
+        }
+        
+        
+        function singleRound (playerSelection){
+            computerSelection = computerPlay();
+            playerSelection = capitalize(playerSelection);
+            if (playerSelection=='Rock') {
+                if (computerSelection=='Rock'){
+                    return 'Rockfight- you\'re even';
+                }
+                else if (computerSelection=='Paper') {
+                    return 'You lose! Paper beats Rock';
+                }
+                else if (computerSelection=='Scissors') {
+                    return 'Rock > Scissors! You win!';
+                }
+                else { alert('Something went wrong.');}
+            }
+            else if (playerSelection=='Scissors') {
+                if (computerSelection=='Scissors'){
+                    return 'Scissorsfight- you\'re even';
+                }
+                else if (computerSelection=='Rock') {
+                    return 'You lose! Rock smashes Scissors';
+                }
+                else if (computerSelection=='Paper') {
+                    return 'You cut them in half! You win!';
+                }
+                else { alert('Something went wrong.');}
+            }
+            else if (playerSelection=='Paper'){
+                if (computerSelection=='Rock'){
+                    return 'Paper beats Rock! You win!';
+                }
+                else if (computerSelection=='Paper') {
+                    return 'Paper - Paper! You\'re even. Play again.';
+                }
+                else if (computerSelection=='Scissors'){
+                    return 'You were cut in half! You lose, Loser!';
+                }
+                else { alert('Something went wrong.');}
+            }
+            else { alert('Something went wrong.');}
+        }
+        
+        function keepScore (string, score) {
+            if (string.includes('even')) {
+                return score+1;
+            }
+            else if (string.includes('You win')) {
+                return score+3;
+            }
+            else if (string.includes('You lose')) {
+                return score;
+            }
+            else { alert('Something went wrong with the calculation.');}
+        }
+        
+        function game () {
+            let playerSelection = '';
+            let score = 0;
+            let playString = '';
+            for (let i=1; i<=5; i++){
+            playerSelection = prompt('Round ' + i + ': Please type in Rock, Paper or Scissors');
+            playString = singleRound(playerSelection)
+            score = keepScore (playString, score)
+            alert(playString + ' Your current score is: ' + score);
+            }
+            if (score>5) {
+                alert('You win the game!');
+            }
+            else if (score<5) {
+                alert('You lose.');
+            }
+            else if (score==5) {
+                alert('Noone wins. Try again!');
+            }
+            else { alert('Something went wrong at the end of the game.');}
+        }
+    </script>
+</body>
+    
+</html>

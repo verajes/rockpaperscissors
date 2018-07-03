@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Rock-Paper-Scissors</title>
+    <meta charset="utf-8"/>
+</head>
+<body>
+    <h1>Rock-Paper-Scissors</h1>
+    <div id="game">
+        
+    </div>
+    <button id='rock'>Rock</button>
+    <button id='paper'>Paper</button>
+    <button id='scissors'>Scissors</button>
+    
+    <script>
+        function capitalize(string) {
+            let lowerCaseString = string.toLowerCase();
+            let capitalizedLetter = lowerCaseString.charAt(0).toUpperCase();
+            let finishedString = lowerCaseString.replace(lowerCaseString.charAt(0),capitalizedLetter)
+            return finishedString;
+        }
+        
+        function computerPlay() {
+            randomNumber = Math.random()*15; //random Number between 0 and 15
+            return (randomNumber<=5) ? 'Rock' : (randomNumber<=10) ? 'Paper' : 'Scissors';
+        }
+        
+        
+        function singleRound (playerSelection){
+            computerSelection = computerPlay();
+            if (playerSelection=='Rock') {
+                if (computerSelection=='Rock'){
+                    return 'Rockfight- you\'re even';
+                }
+                else if (computerSelection=='Paper') {
+                    return 'You lose! Paper beats Rock';
+                }
+                else if (computerSelection=='Scissors') {
+                    return 'Rock > Scissors! You win!';
+                }
+                else { alert('Something went wrong.');}
+            }
+            else if (playerSelection=='Scissors') {
+                if (computerSelection=='Scissors'){
+                    return 'Scissorsfight- you\'re even';
+                }
+                else if (computerSelection=='Rock') {
+                    return 'You lose! Rock smashes Scissors';
+                }
+                else if (computerSelection=='Paper') {
+                    return 'You cut them in half! You win!';
+                }
+                else { alert('Something went wrong.');}
+            }
+            else if (playerSelection=='Paper'){
+                if (computerSelection=='Rock'){
+                    return 'Paper beats Rock! You win!';
+                }
+                else if (computerSelection=='Paper') {
+                    return 'Paper - Paper! You\'re even. Play again.';
+                }
+                else if (computerSelection=='Scissors'){
+                    return 'You were cut in half! You lose, Loser!';
+                }
+                else { alert('Something went wrong.');}
+            }
+            else { alert('Something went wrong.');}
+        }
+        
+        function keepScorePlayer (string, score) {
+            if (string.includes('even')) {
+                return score+1;
+            }
+            else if (string.includes('You win')) {
+                return score+3;
+            }
+            else if (string.includes('You lose')) {
+                return score;
+            }
+            else { alert('Something went wrong with the calculation.');}
+        }
+        
+           function keepScoreComputer (string, score) {
+            if (string.includes('even')) {
+                return score+1;
+            }
+            else if (string.includes('You win')) {
+                return score;
+            }
+            else if (string.includes('You lose')) {
+                return score+3;
+            }
+            else { alert('Something went wrong with the calculation.');}
+        }
+        
+        function game (playerSelection) {
+    
+            let playString = '';
+            
+            playString = singleRound(playerSelection);
+            playerScore = keepScorePlayer (playString, playerScore);
+            computerScore = keepScoreComputer (playString, computerScore);
+        
+        document.getElementById('game').write(playString); //not a function at game??
+        document.getElementById('game').write('Your current score: ' + playerScore);
+        document.getElementById('game').write('The computer\'s current score: ' + playerScore);
+        }
+        
+        let playerScore = 0;
+        let computerScore = 0;
+        
+        
+        document.getElementById('rock').addEventListener('click', game('Rock'));
+        document.getElementById('paper').addEventListener('click', game('Paper'));
+        document.getElementById('scissors').addEventListener('click', game('Scissors'));
+        
+        if (playerScore<=5 || computerScore<=5) {
+            if (playerScore==computerScore){
+                document.getElementById('game').write('You\'re even. Noone wins. Try again.');
+                playerScore=0;
+                computerScore=0;
+            }
+            else if (playerScore<computerScore) {
+               document.getElementById('game').write('You\'ve lost the game. Try again!');
+               playerScore=0;
+               computerScore=0;
+            }
+             else if (playerScore>computerScore) {
+               document.getElementById('game').write('You win!  Congratulation!');
+               playerScore=0;
+               computerScore=0;
+            }
+        }
+        
+    </script>
+</body>
+    
+</html>
