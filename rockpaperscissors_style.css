@@ -1,0 +1,19 @@
+.game {
+    display: grid;  
+    grid-template-columns: 7fr 10fr 7fr;
+}
+
+.game > p {
+    grid-column: 1/25;
+    grid-row: 3/4;
+    justify-self: stretch;
+}
+
+.button {
+    
+}
+
+#player{
+    grid-column: 2/7;
+}
+
