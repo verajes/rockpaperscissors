@@ -1,19 +1,69 @@
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  background: #ffffee;
+  color: #333333;
+  font-size: 1.1em;
+  line-height: 1.5;
+  text-align: center;
+}
+
+
 .game {
     display: grid;  
-    grid-template-columns: 7fr 10fr 7fr;
+    grid-template-columns: 1fr 1fr 2fr 1fr 1fr;
 }
 
-.game > p {
-    grid-column: 1/25;
-    grid-row: 3/4;
-    justify-self: stretch;
-}
 
 .button {
-    
+    display: inline-block;
+    width: 100px;
+    background-image: linear-gradient(#777766, #333333);
+    -moz-background-image: linear-gradient(#eeeedd, #444444);
+    -webkit-background-image: linear-gradient(#eeeedd, #444444);
+    background-color: #333333;
+    border-radius: 4px;
+    -moz-border-radius: 4px;
+    -webkit-border-radius: 4px;
+    cursor: pointer;
+    color: #ffffee;
+    font-family: "Helvetica";
+    font-weight: 100;
+	font-size: 10pt;
+	padding: 10px;
+	text-decoration: none;
+    border: 0;
 }
 
 #player{
-    grid-column: 2/7;
+    grid-column: 2/3;
+}
+
+#score {
+    grid-column: 3/4;
+    grid-row: 1;
+    margin: 0;
+}
+
+#score > p {
+    font-size: 2em;
+    margin-bottom: 10px;
+    margin-top: 20px;
+}
+
+
+#score > h2 {
+    margin-bottom: 0;
+}
+
+
+#computer {
+    grid-column: 4/5;  
+}
+
+#restart {
+    grid-column: 3/4;
+    grid-row: 2;
+    text-align: center;
 }
 

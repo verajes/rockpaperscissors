@@ -7,12 +7,12 @@
 </head>
 <body>
     <h1>Rock-Paper-Scissors</h1>
-    <div class="game">
         <p>Choose Rock, Paper or Scissors!</p>
         <button id="rock" class="button">Rock</button>
         <button id="paper" class="button">Paper</button>
         <button id="scissors" class="button">Scissors</button>
 
+        <div class="game">
         <div id="player"><h2>Player</h2>
             <p id="playerselection">Select an item to start the game.</p>
         </div>
@@ -22,19 +22,17 @@
         </div>
 
         <div id="score"><h2>Score</h2>
-            <div id="playerscorediv">
-                <p id="playerscore">0</p>
-            </div>
-            <div id=":">
-                <p>:</p>
-            </div>
-            <div id="playerscorediv">
-                <p id="computerscore">0</p>
-            </div>
-            <p id="output"></p>
+            
+            <p><span id="playerscore">0</span> : <span id="computerscore">0</span></p>
+            
+            <span id="output"></span>
+            
+            <p></p>
+            
+            <button id="restart" class="button"> Restart </button>
         </div>
 
-        <button id="restart"> Restart </button>
+        
         
     </div>
     
